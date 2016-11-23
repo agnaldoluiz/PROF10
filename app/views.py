@@ -217,3 +217,6 @@ def delete(id):
     flash('Your post has been deleted.')
     return redirect(url_for('main'))
 
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
