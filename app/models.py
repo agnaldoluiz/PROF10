@@ -11,6 +11,13 @@ else:
     enable_search = True
     import flask.ext.whooshalchemy as whooshalchemy
 
+from config import WHOOSH_ENABLED
+
+enable_search = WHOOSH_ENABLED
+if enable_search:
+    import flask.ext.whooshalchemy as whooshalchemy
+
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     first_name = db.Column(db.String(64))

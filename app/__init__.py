@@ -2,6 +2,7 @@ from flask import Flask, redirect, url_for, session
 from flask_oauth import OAuth
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__)
 #load config archive \config.py
@@ -28,3 +29,10 @@ facebook = oauth.remote_app('facebook',
 )
 
 from app import models, views
+
+if os.environ.get('HEROKU') is not None:
+    import logging
+    stream_handler = logging.StreamHandler()
+    app.logger.addHandler(stream_handler)
+    app.logger.setLevel(logging.INFO)
+    app.logger.info('microblog startup')
