@@ -2,7 +2,7 @@ Flask
 Flask-Login
 Flask-OAuth
 Flask-SQLAlchemy
-Flask-WTF
+Flask-WTF==0.13.1
 Flask-WhooshAlchemy
 Jinja2
 SQLAlchemy
