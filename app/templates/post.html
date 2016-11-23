@@ -1,0 +1,15 @@
+        <td width="140px"><h5>Class: {{post.subject}}</h5>
+        <h5 class = "voffset3">Rate: {{post.rating|round(1, 'floor')}}</h5>
+        <h6>Teaching: {{post.teaching}} <br />
+        Material: {{post.material}}
+        Participation: {{post.participation}}
+        Difficulty: {{post.difficulty}}
+        Attendance? {{post.attendance}}</h6>
+        </td>
+        <td>
+        <h5><a href="{{ url_for('professor', profname = post.about.first_name ) }}">{{post.about.first_name}} {{post.about.last_name}} </a> - <a href="{{ url_for('college', college_name = post.about.college.college_name)}}">{{post.about.college.college_name}}</a></h5>
+        <p class="lead">{{post.body}}</p>
+        {% if post.author.id == g.user.id %}
+                <div><a href="{{ url_for('delete', id = post.id) }}">{{ ('Delete') }}</a></div>
+        {% endif %}
+        </td>

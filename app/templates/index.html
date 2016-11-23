@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-sm-12">
+		 		<h1 class = "text-center">Prof 10</h1>
+		 		<p class = "text-center">Prof 10 is a website to help students find and rate professors. Here you can truly evaluate your professor.</p>
+			</div> 
+		</div>
+
+		<div class = "row">
+		<form action="{{ url_for('search') }}" method="post" name="search">
+			<div class = "col-sm-12">
+			  	<div class="form-group">
+			  		<div class = "col-sm-6 col-sm-offset-3 voffset3">
+			    		{{ g.search_form.hidden_tag() }}{{ g.search_form.search(size=70, placeholder="Look for a Professor") }}
+			    	</div>
+			  	</div>
+          		<div class = "col-sm-1 pull-right-small">
+            		<button type="submit" class="btn btn-primary" value="Search">Search</button>
+          		</div>
+			</div>
+		</form>
+		</div>
+    <div class = "row">
+		<div class = "voffset5">
+			<form action="{{ url_for('login') }}" method="POST">
+			   <button type="submit" class="btn btn-facebook btn-lg center-block"><i class="fa fa-facebook"></i>  | Connect with Facebook</button><br>
+		 	</form>
+		</div>
+    </div>
+
+
+	</div> <!-- /container -->
+</div>
+
+<div class = "container voffset5" id = "how_to_use">
+
+<h1 class = "text-center"> How to use </h1>
+<p1 class = "text-center"> PROF10 has the goal to help improving college education throughout consistent feedbacks to professors and TAs. It is permanently prohibited to insult or disrespect the profession of professors. Those who do not follow the rules, will be permanently banned.</p1>
+
+<p1 class = "text-center">
+
+You will evaluate your professor in some different dimensios. Difficulty will not count for professor's general rating. It is only an informative dimension. The scale used is:
+<ul class="list-group text-left">
+	<li class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">0</h5>
+		<p class="list-group-item-text">The professor is really bad in that dimension, that no other can balance and he should not teach unless he improves those skills.</p>
+	</li>
+	<li class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">1</h5> 
+		<p class="list-group-item-text">The professor has serious problems with this dimension and he shoul urgently tries to improve it.</p>
+	</li>
+	<li class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">2</h5>
+		<p class="list-group-item-text">The professor is bad in this dimension.</p>
+	</li>
+	<li class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">3</h5>
+		<p class="list-group-item-text">The professor is ok with this dimension, but not great. He can still improves it.</p>
+	</li>
+	<li class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">4</h5>
+		<p class="list-group-item-text">The professor is pretty good in this dimension and the students should not worry, because he will do a good job.</p>
+	</li>
+	<li class="list-group-item list-group-item-action">
+		<h5 class="list-group-item-heading">5</h5>
+		<p class="list-group-item-text">The professor aces in this dimension. He is great and has nothing to improve at all. Go have your class!</p>
+	</li>
+</ul>
+
+The other dimensions are:
+<ul class="list-group text-left">
+	<li class="list-group-item">
+		<h5 class="list-group-item-heading">Teaching</h5>
+		How is the quality of the class? Does the professor passes the knowledge clearly?</li>
+	<li class="list-group-item">
+		<h5 class="list-group-item-heading">Material</h5>
+		How is the class material? Does the professor provide good handover and have things organized?</li>
+	<li class="list-group-item">
+		<h5 class="list-group-item-heading">Participation</h5>
+		Does de professor care about the students? Does he attend office hours?</li>
+	<li class="list-group-item">
+		<h5 class="list-group-item-heading">Attendance</h5>
+		Is attendance mandatory or not? Will you still do a good job without attending classes?</li>
+</ul>
+
+</p1>
+
+</div>
+
+
+<div class = "container voffset5">
+
+<h1 class = "text-center" id = "contact"> Contact Us </h1>
+<p1 class = "text-center"> PROF10 was built by a students from Technological Institute of Aeronautics as a project for senior design of the Computer Engineering course. The content of PROF10 is still being improved to present a better service. Please contact us if you have questions and we appreciate your feedbacks.</p1>
+  <div class="row voffset6">
+
+    <div class="col-sm-12">
+    <div class ="row text-center">
+      			<img class="img-circle text-center" src="/static/img/profile.jpg" align="center"  width=150px alt="Generic placeholder image">
+    </div>
+      <h2 class = "text-center">Agnaldo Cunha</h2>
+      <p class = "text-center lead">agnaldo@rmp.com</p>
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock %}

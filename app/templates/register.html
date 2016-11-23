@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Register</h1>
+<h3>Register with your {{ provider.name }} account: {{ connection_values['display_name'] }}</h3>
+<form action="" method="POST" name="register">
+    {{ form.hidden_tag() }}
+    <p>Email:    </p> {{ form.email }}<br>
+    <p>Confirm Password: </p>{{ form.password }}<br>
+    <p>Confirm Password: </p>{{ form.confirm }}<br><br>
+    <button type="submit">Register</button>
+</form>
+{% endblock %}

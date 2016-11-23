@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Colleges</h2>
+<table class="table table-hover">
+<thead>
+          <tr>
+            <th>College Name</th>
+            <th>College Acronym</th>
+          </tr>
+</thead>
+{% for college in colleges %}
+	<tr valign="top">
+		<td><a href="{{url_for('college', college_name=college.college_name)}}">{{college.college_name}}</a></td>
+		<td>{{college.college_acronym}}</td>
+	</tr>
+{% endfor %}
+{% endblock %}

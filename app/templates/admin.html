@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content%}
+<h2>Add Professor</h2>
+
+<form action="" method="post" name="post">
+    {{form.hidden_tag()}}
+    <table>
+        <tr>
+            <td>First Name:</td>
+            <td>{{ form.first_name(size = 30, maxlength = 64) }}</td>
+        </tr>
+        <tr>
+        	<td>Last Name:</td>
+        	<td>{{ form.last_name(maxlength = 64) }}</td>
+        </tr>
+        <tr>
+            <td>Department:</td>
+            <td>{{ form.department(maxlength = 64) }}</td>
+        </tr>
+        <tr>
+        	<td>College</td>
+        	<td>{{ form.college(maxlength = 64) }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="add_professor" value="Add!"></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+
+<br>
+<br>
+<br>
+
+<h2>Add College</h2>
+<form action="" method="post" name="post">
+    {{form2.hidden_tag()}}
+    <table>
+        <tr>
+            <td>College Name:</td>
+            <td>{{ form2.college_name(size = 30, maxlength = 128) }}</td>
+        </tr>
+        <tr>
+            <td>College Acronym:</td>
+            <td>{{ form2.college_acronym(maxlength = 8) }}</td>
+        </tr>
+        <tr>
+            <td>State:</td>
+            <td>{{ form2.state(maxlength = 64) }}</td>
+        </tr>
+            <td></td>
+            <td><input type="submit" name="add_college" value="Add!"></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+
+
+{% endblock %}

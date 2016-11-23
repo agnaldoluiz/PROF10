@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<div class = "container">
+    <div class="well well-large voffset2">
+        <div class = "row">
+            <div class = "col-xs-3">
+                <img src="/static/img/nophoto.jpeg" class="img-thumbnail">
+            </div>
+            <h3>{{professor.first_name}} {{professor.last_name}}</h3>
+            <h4 class = "voffset4">School: {{ professor.college.college_name }}</h4>
+            <h4 class = "voffset4">Departament: {{professor.department}} </h4>
+            {% if professor.rating %}
+            <h4 class = "voffset4">General Rating: {{professor.rating|round(1, 'floor')}}</h4>
+            {% else %}
+            <h4 class = "voffset4">General Rating: None</h4>
+            {% endif %}
+
+        </div>
+    </div>
+    {% if g.user.is_authenticated %}
+    <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal">Post a Review</button>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Post a Review:</h4>
+        </div>
+
+      <div class="modal-body">
+
+        <form action="" method="post" name="post" role="form" class="form-horizontal">
+            {{form.hidden_tag()}}
+              <div class="form-group">
+                <label for="className" class="col-sm-3 control-label">Class Name (Use Acronym):</label>
+                <div class="col-sm-4">
+                  {{ form.subject(class_= "form-control") }}
+                </div>
+             </div>
+
+             <div class="form-group">
+                <label for="className" class="col-sm-3 control-label">Teaching 0-5 (Quality of class):</label>
+                <div class="col-sm-4">
+                  {{ form.teaching(class_= "form-control") }}
+                </div>
+             </div>
+
+             <div class="form-group">
+                <label for="className" class="col-sm-3 control-label">Material 0-5 (Quality of material):</label>
+                <div class="col-sm-4">
+                  {{ form.material(class_= "form-control") }}
+                </div>
+             </div>
+
+             <div class="form-group">
+                <label for="className" class="col-sm-3 control-label">Participation 0-5 (Professor's charisma and availability):</label>
+                <div class="col-sm-4">
+                  {{ form.participation(class_= "form-control") }}
+                </div>
+             </div>
+
+             <div class="form-group">
+                <label for="className" class="col-sm-3 control-label">Difficulty 0-5 (How stiff is the professor?):</label>
+                <div class="col-sm-4">
+                  {{ form.difficulty(class_= "form-control") }}
+                </div>
+             </div>
+
+             <div class="form-group">
+                <label for="className" class="col-sm-3 control-label">Attendance (Is it mandatory?):</label>
+                <div class="col-sm-4">
+                  Yes
+                  {{ form.attendance(class_= "form-control") }}
+                </div>
+             </div>
+
+              <div class="form-group">
+                    <label class="col-sm-2 control-label">Comment:</label>
+                    <div class="col-sm-10">
+                    {{ form.post(maxlength = 140, class_= "form-control") }}
+                    </div>             
+                </div>
+        
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Post</button>
+      </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div> 
+    {% else %}
+    <a class="btn btn-primary btn-lg active pull-right" href="{{ url_for('login') }}">Login to write a review</a>
+    {% endif %}
+    <div class = "voffset4"></div>   
+    <table class="table table-hover">
+<thead>
+          <tr>
+            <th>General Info</th>
+            <th>Comment</th>
+          </tr>
+</thead>
+{% for post in posts %}
+    <tr valign="top">{% include 'post.html' %}</tr>
+{% endfor %}
+</table>
+</div>
+
+{% endblock %}

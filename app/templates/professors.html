@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Colleges</h2>
+<table class="table table-hover">
+<thead>
+          <tr>
+            <th>Professor Name</th>
+            <th>College</th>
+            <th>Professor Rating</th>
+          </tr>
+</thead>
+{% for professor in professors %}
+	<tr valign="top">
+		<td><a href="{{url_for('professor', profname=professor.first_name)}}">{{professor.first_name}} {{professor.last_name}}</a></td>
+		<td><a href="{{url_for('college', college_name = professor.college.college_name)}}">{{professor.college.college_acronym}}</a></td>
+		{% if professor.rating %}
+		<td>{{professor.rating|round(1, 'floor')}}</td>
+		{% else %}
+		<td>None</td>
+		{% endif %}
+	</tr>
+{% endfor %}
+{% endblock %}
